@@ -1,14 +1,36 @@
 <template>
-    <div>
-        <button @click="exportCats">Export Cats</button>
-        <input type="file" accept="text/json" @change="importCats">
-        hi cat
+    <div :class="layout.wrapper">
+        <div>
+            <button @click="exportCats">Export Cats</button>
+            <input type="file" accept="text/json" @change="importCats">
+        </div>
+        <div :class="layout.title">
+            Cat Dashboard
+        </div>
+        <button :class="layout.generateCatBtn" @click="generateCatBtnClicked">Generate Cat</button>
+        <template :key="cat.id" v-for="cat in catList">
+            <CatPreview :name="cat.name"/>
+        </template>
     </div>
+    
 </template>
 
 <script>
+import CatPreview from '@/components/CatPreview.vue';
+import { mapWritableState, mapState } from 'pinia'
+import { useCatStore } from '@/stores/cats'
+
 export default {
     name: 'Dashboard',
+    components: {
+        CatPreview
+    },
+    computed: {
+        ...mapWritableState(useCatStore, [
+            'catList',
+            'catIdCounter'
+        ])
+    },
     methods: {
         exportCats() {
             // TODO - put the cat data you want to export in JSON.stringify()
@@ -32,9 +54,13 @@ export default {
                 // TODO - do something with the imported cats
             })
             fileReader.readAsText(files[0])
+        },
+        generateCatBtnClicked() {
+            this.$router.push('/generator')
         }
     }
 }
 </script>
 
-<style module src="./Dashboard.css" />
+<!-- <style module src="./Dashboard.css" /> -->
+<style module="layout" src="@/styles/generalLayout.css" />
