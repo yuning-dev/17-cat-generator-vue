@@ -1,4 +1,38 @@
 .wrapper {
-    width: 100px;
-    height: 100px;
+    width: 192.5px;
+    height: 150px;
+    border: 5px double grey;
+    padding: 15px 10px 15px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    letter-spacing: 0.5px;
+}
+
+.wrapper:hover {
+    cursor: pointer;
+}
+
+.hvrGrowShadow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+}
+
+.hvrGrowShadow:hover, .hvrGrowShadow:focus, .hvrGrowShadow:active {
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.details {
+    font-weight: bold;
+    margin-right: 5px;
 }

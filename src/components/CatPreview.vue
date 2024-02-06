@@ -1,19 +1,25 @@
 <template>
-    I'm cat preview
-    <!-- <div :class="$style.wrapper"> -->
-        <!-- <p>name: {{ cat.name }}</p>
-        <p>breed: {{ cat.breed }}</p> -->
-    <!-- </div> -->
+    <div :class="[$style.wrapper, $style.hvrGrowShadow]" @click="catPreviewClicked">
+        <div><span :class="$style.details">Name: </span>{{ cat.name }}</div>
+        <div><span :class="$style.details">Breed: </span>{{ cat.breed }}</div>
+    </div>
 </template>
 
 <script>
+
 export default {
     name: 'CatPreview',
     props: {
-        name: String,
-        breed: String
+        cat: Object,
+    },
+    methods: {
+        catPreviewClicked() {
+            this.$router.push({ name: 'details', params: { id: this.cat.id }})
+            console.log(this.cat.id)
+        },
+        
     }
 }
 </script>
 
-<style module css="./CatPreview.css"/>
+<style module src="./CatPreview.css"/>
