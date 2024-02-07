@@ -10,7 +10,20 @@
             <p :class="$style.instruction">Please enter the information below to create your cat:</p>
             <div :class="$style.inputsWrapper">
                 <p>name: <input type="text" v-model="newCatName"></p>
-                <p>breed: <input type="text" v-model="newCatBreed"></p>
+                <p>breed: 
+                    <select name="breed" v-model="newCatBreed">
+                        <option value="American shorthair">American shorthair</option>
+                        <option value="Bombay">Bombay</option>
+                        <option value="British shorthair">British shorthair</option>
+                        <option value="Burmese">Burmese</option>
+                        <option value="Himalayan">Himalayan</option>
+                        <option value="Maine coon">Maine coon</option>
+                        <option value="Persian">Persian</option>
+                        <option value="Ragdoll">Ragdoll</option>
+                        <option value="Siamese">Siamese</option>
+                        <option value="Sphynx">Sphynx</option>
+                    </select>
+                </p>
                 <p>age: <input type="text" v-model="newCatAge"></p>
                 <p>{{ ageError }}</p>
                 <template v-if="displaysError">
@@ -45,7 +58,8 @@ export default {
             'catIdCounter'
         ]),
         ...mapState(useCatStore, [
-            'incrementId'
+            'incrementId',
+            'catImagesPaths'
         ]),
         missingInformationError() {
             const trimmedName = this.newCatName.trim()
@@ -77,12 +91,15 @@ export default {
             }
         },
         async generateCat() {
+            let formattedBreed = this.newCatBreed.toLowerCase().split(' ').join('-')
             const cat = {
                 id: this.catIdCounter,
                 name: this.newCatName,
                 breed: this.newCatBreed,
-                age: this.newCatAge 
+                age: this.newCatAge,
+                imageSrc: '/' + formattedBreed + '.jpg' 
             }
+            console.log(cat.imageSrc)
             if (this.newCatName !== '' && this.newCatBreed !== '' && this.newCatAge !== '') {
                 this.catList.push(cat)
                 this.incrementId

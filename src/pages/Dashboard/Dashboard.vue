@@ -13,13 +13,16 @@
         </div>
         <template v-if="catList.length !== 0">
                 <div :class="$style.importExportWrapper">
-                    <p>You can save your cats in a file here: 
-                        <button @click="exportCats" :class="$style.impExpBtn">Export cats</button>
-                    </p>
-                    <p>To revisit any cats you created from a previous session, click here: 
-                        <label for="fileUpload" :class="$style.impExpBtn">Import cats</label>
-                        <input type="file" accept="text/json" @change="importCats" id="fileUpload" :class="$style.importInput">
-                    </p>
+                    <div>If you would like to save your cats into a file or load your saved cats file from a previous session, please click the buttons below:</div>
+                    <div :class="$style.importExportSubwrapper">
+                        <p>To save your cats: 
+                            <button @click="exportCats" :class="$style.impExpBtn">Export cats</button>
+                        </p>
+                        <p>To load your cats: 
+                            <label for="fileUpload" :class="$style.impExpBtn">Import cats</label>
+                            <input type="file" accept="text/json" @change="importCats" id="fileUpload" :class="$style.importInput">
+                        </p>
+                    </div>
                 </div>
             </template>
         </div>

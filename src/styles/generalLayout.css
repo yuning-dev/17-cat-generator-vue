@@ -65,6 +65,11 @@ body {
 }
 
 .generateCatBtn:hover {
-    filter: brightness(120%);
     cursor: pointer;
+    filter: brightness(115%);
+}
+
+.generateCatBtn:active {
+    translate: 3px 4.5px;
+    box-shadow: none;
 }

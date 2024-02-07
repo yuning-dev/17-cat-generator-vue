@@ -1,9 +1,17 @@
+.subwrapper {
+    display: flex;
+}
+
 .detailsWrapper {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 15px 30px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     letter-spacing: 0.5px;
+    border: 1px solid #C0C0C0;
+    border-radius: 10px;
+    background: white;
 }
 
 .details {

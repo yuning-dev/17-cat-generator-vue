@@ -5,10 +5,13 @@
             <router-link to="/generator" :class="layout.navbarLink">Cat Generator</router-link>
         </div>
         <div :class="layout.title">Here's your cat:</div>
-        <div :class="$style.detailsWrapper">
-            <div><span :class="$style.details">Name: </span>{{ currentCat.name }}</div>
-            <div><span :class="$style.details">Breed: </span>{{ currentCat.breed }}</div>
-            <div><span :class="$style.details">Age: </span>{{ currentCat.age }}</div>
+        <div :class="$style.subwrapper">
+            <div><img src="/bombay.jpg" width="200" /></div>
+            <div :class="$style.detailsWrapper">
+                <div><span :class="$style.details">Name: </span>{{ currentCat.name }}</div>
+                <div><span :class="$style.details">Breed: </span>{{ currentCat.breed }}</div>
+                <div><span :class="$style.details">Age: </span>{{ currentCat.age }}</div>
+            </div>
         </div>
     </div>
 </template>
