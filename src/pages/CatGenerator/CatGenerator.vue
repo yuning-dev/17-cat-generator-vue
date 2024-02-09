@@ -37,7 +37,7 @@
 
 <script>
 import { useCatStore } from '@/stores/cats'
-import { mapWritableState, mapState } from 'pinia'
+import { mapWritableState, mapState, mapActions } from 'pinia'
 
 export default {
     name: 'CatGenerator',
@@ -49,16 +49,12 @@ export default {
             displaysError: false,
         }
     },
-    watch: {
-
-    },
     computed: {
         ...mapWritableState(useCatStore, [
             'catList',
             'catIdCounter'
         ]),
         ...mapState(useCatStore, [
-            'incrementId',
             'catImagesPaths'
         ]),
         missingInformationError() {
@@ -78,6 +74,7 @@ export default {
 
     },
     methods: {
+        ...mapActions(useCatStore, ['addToCatList', 'incrementId']),
         generateCatBtnClicked() {
             const trimmedName = this.newCatName.trim()
             const trimmedBreed = this.newCatBreed.trim()
@@ -101,8 +98,8 @@ export default {
             }
             console.log(cat.imageSrc)
             if (this.newCatName !== '' && this.newCatBreed !== '' && this.newCatAge !== '') {
-                this.catList.push(cat)
-                this.incrementId
+                this.addToCatList(cat)
+                this.incrementId()
             }
         }
     },
