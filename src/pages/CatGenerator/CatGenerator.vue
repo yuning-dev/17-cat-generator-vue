@@ -59,10 +59,9 @@ export default {
         ]),
         missingInformationError() {
             const trimmedName = this.newCatName.trim()
-            const trimmedBreed = this.newCatBreed.trim()
             const trimmedAge = this.newCatAge.trim()
 
-            if (trimmedName === '' || trimmedBreed === '' || trimmedAge === '') {
+            if (trimmedName === '' || this.newCatBreed === '' || trimmedAge === '') {
                 return 'Some information is missing! Please enter it so your cat can be generated.'
             }
         },
@@ -77,10 +76,9 @@ export default {
         ...mapActions(useCatStore, ['addToCatList', 'incrementId']),
         generateCatBtnClicked() {
             const trimmedName = this.newCatName.trim()
-            const trimmedBreed = this.newCatBreed.trim()
             const trimmedAge = this.newCatAge.trim()
 
-            if (trimmedName !== '' && trimmedBreed !== '' && trimmedAge !== '' && !Number.isNaN(Number(this.newCatAge))) {
+            if (trimmedName !== '' && this.newCatBreed !== '' && trimmedAge !== '' && !Number.isNaN(Number(this.newCatAge))) {
                 this.generateCat()
                 this.$router.push('/')
             } else {
@@ -91,9 +89,9 @@ export default {
             let formattedBreed = this.newCatBreed.toLowerCase().split(' ').join('-')
             const cat = {
                 id: this.catIdCounter,
-                name: this.newCatName,
+                name: this.newCatName.trim(),
                 breed: this.newCatBreed,
-                age: this.newCatAge,
+                age: this.newCatAge.trim(),
                 imageSrc: '/' + formattedBreed + '.jpg' 
             }
             console.log(cat.imageSrc)

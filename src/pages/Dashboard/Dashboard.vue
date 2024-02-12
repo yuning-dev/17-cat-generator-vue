@@ -9,7 +9,7 @@
                     <CatPreview :cat="cat" />
                 </template>
             </div>
-            <button :class="layout.generateCatBtn" @click="generateCatBtnClicked">Generate Cat</button>
+            <button :class="layout.generateCatBtn" @click="generateCatBtnClicked" data-testid="generateCatBtn">Generate Cat</button>
         </div>
         <template v-if="catList.length !== 0">
                 <div :class="$style.importExportWrapper">

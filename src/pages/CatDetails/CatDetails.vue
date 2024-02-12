@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { mapState, mapWritableState } from 'pinia';
+import { mapWritableState } from 'pinia';
 import { useCatStore } from '@/stores/cats';
 
 export default {
@@ -32,9 +32,6 @@ export default {
         this.currentCat = cat
     },
     computed: {
-        ...mapState(useCatStore, [
-            'activeCatId'
-        ]),
         ...mapWritableState(useCatStore, [
             'catList'
         ]),
